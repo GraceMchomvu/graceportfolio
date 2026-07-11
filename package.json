@@ -1,0 +1,11 @@
+{
+  "name": "grace-joshua-portfolio",
+  "private": true,
+  "scripts": {
+    "dev": "npx serve mainpack/html -l 5500",
+    "deploy": "wrangler pages deploy mainpack/html --project-name=grace-joshua"
+  },
+  "devDependencies": {
+    "wrangler": "^4.110.0"
+  }
+}
