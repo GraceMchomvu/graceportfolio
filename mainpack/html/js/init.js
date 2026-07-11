@@ -362,8 +362,19 @@ $.fn.DeeboProgressIsInViewport = function(content) {
 		},
 		
 		resume: function(){
-			$('.deebo_fn__cv .cv__content').scrollTop(0);
 			$('body').addClass('resume-opened');
+			var scrollHero = function(){
+				$('.deebo_fn__cv .cv__content').scrollTop(0);
+				$('.deebo_fn__cv').scrollTop(0);
+				window.scrollTo(0, 0);
+				var hero = document.getElementById('hero-header');
+				if(hero){
+					hero.scrollIntoView({ block: 'start', behavior: 'auto' });
+				}
+			};
+			scrollHero();
+			setTimeout(scrollHero, 50);
+			setTimeout(scrollHero, 300);
 		},
 		
 		progress: function(){

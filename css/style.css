@@ -563,11 +563,16 @@ body.resume-opened .deebo_fn__cv .cv__bg2{
 	width: 100%;
 	float: left;
 	background-color: transparent;
-	overflow: hidden;
+	overflow: visible;
+}
+#hero-header.section_header{
+	padding-top: 16px;
+	padding-bottom: 16px;
+	margin-bottom: 30px;
 }
 .section_header .content{
-	padding-top: 200px;
-	padding-bottom: 200px;
+	padding-top: clamp(12px, 2.5vh, 32px);
+	padding-bottom: clamp(12px, 2.5vh, 32px);
 	display: -webkit-flex;
 	display: -moz-flex;
 	display: -ms-flex;
@@ -576,13 +581,15 @@ body.resume-opened .deebo_fn__cv .cv__bg2{
 	-ms-align-items: center;
 	align-items: center;
 	justify-content: space-between;
-	min-height: 90vh;
-	min-height: calc(100vh - 160px); /* 50px spacing from top, 50px from bottom of the window & 30px from top, 30px from bottom of the section. Summary 160px */
+	gap: 24px;
+	box-sizing: border-box;
+	min-height: calc(100vh - 140px);
+	min-height: calc(100dvh - 140px);
 }
 .section_header .left_hero_header{
-	width: 400px;
+	width: min(360px, 34vw, 42vh);
 	max-width: 34%;
-	padding-right: 48px;
+	padding-right: 24px;
 	flex-shrink: 0;
 }
 .section_header .right_hero_header{
@@ -592,6 +599,8 @@ body.resume-opened .deebo_fn__cv .cv__bg2{
 }
 .section_header .circle{
 	position: relative;
+	width: 100%;
+	max-width: 100%;
 }
 .section_header .circle .bg_img{
 	position: absolute;
@@ -609,7 +618,10 @@ body.resume-opened .deebo_fn__cv .cv__bg2{
 .section_header .circle img{
 	position: relative;
 	display: block;
-	min-width: 100%;
+	width: 100%;
+	min-width: 0;
+	height: auto;
+	max-height: min(42vh, 360px);
 	border-radius: 100%;
 	z-index: 15;
 	opacity: 0;
@@ -2480,6 +2492,16 @@ body.light{
 		-o-flex-direction: column;
 		flex-direction: column;
 		align-items: center;
+		justify-content: center;
+		gap: 12px;
+		padding-top: 8px;
+		padding-bottom: 8px;
+		min-height: calc(100vh - 100px);
+		min-height: calc(100dvh - 100px);
+	}
+	#hero-header.section_header{
+		padding-top: 8px;
+		padding-bottom: 8px;
 	}
 	.section_header .right_hero_header{
 		width: 100%;
@@ -2488,11 +2510,14 @@ body.light{
 	}
 	.section_header .left_hero_header{
 		width: 100%;
-		max-width: 320px;
+		max-width: min(240px, 38vh);
 		padding-right: 0;
-		margin-bottom: 48px;
+		margin-bottom: 8px;
 		margin-left: auto;
 		margin-right: auto;
+	}
+	.section_header .circle img{
+		max-height: min(38vh, 240px);
 	}
 	.my_self{
 		text-align: center;
@@ -2501,11 +2526,12 @@ body.light{
 		box-sizing: border-box;
 	}
 	.my_self h2{
-		font-size: clamp(26px, 7.5vw, 48px);
+		font-size: clamp(26px, 7vw, 42px);
 		line-height: 1.2;
 	}
 	.my_self h4{
-		font-size: clamp(18px, 4.5vw, 28px);
+		font-size: clamp(16px, 4vw, 24px);
+		margin-bottom: 4px;
 	}
 	.clients_wrapper ul li{
 		width: 50%;
@@ -2646,15 +2672,26 @@ body.light{
 }
 
 @media(max-width: 480px){
+	.section_header .content{
+		min-height: calc(100vh - 72px);
+		min-height: calc(100dvh - 72px);
+		padding-top: 4px;
+		padding-bottom: 4px;
+		gap: 8px;
+	}
 	.section_header .left_hero_header{
-		margin-bottom: 28px;
+		margin-bottom: 4px;
+		max-width: min(200px, 34vh);
 	}
 	.section_header .circle{
-		max-width: 260px;
+		max-width: 200px;
 		margin: 0 auto;
 	}
+	.section_header .circle img{
+		max-height: min(34vh, 200px);
+	}
 	.my_self h2{
-		font-size: clamp(22px, 8.2vw, 34px);
+		font-size: clamp(22px, 7.5vw, 32px);
 	}
 	.cv__header .contact_info p,
 	.cv__header .quote{
@@ -2662,6 +2699,9 @@ body.light{
 	}
 	.deebo_fn__cv .cv__content section{
 		padding: 24px 16px;
+	}
+	#hero-header.section_header{
+		padding: 4px 16px 12px;
 	}
 	.right_container{
 		padding: 0 16px;
