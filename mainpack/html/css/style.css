@@ -41,6 +41,22 @@
 	--muted: #8f9a93;
 	--line: #2c3531;
 	--shadow: rgba(8, 12, 10, 0.45);
+	--track: #121816;
+	--on-accent: #0f1312;
+	--progress-fill: #3a4641;
+}
+body.light{
+	--ink: #e8efeb;
+	--panel: #ffffff;
+	--panel-2: #f4f8f6;
+	--elevated: #e4ebe7;
+	--text: #1a221f;
+	--muted: #5a6660;
+	--line: #d5dfda;
+	--shadow: rgba(26, 34, 31, 0.08);
+	--track: #d7e0db;
+	--on-accent: #0f1312;
+	--progress-fill: #b7c9bf;
 }
 html{
 	overflow-x: hidden;
@@ -909,7 +925,7 @@ body.resume-opened .deebo_fn__cv .cv__bg2{
 	padding: 0 25px;
 	line-height: 40px;
 	font-size: 18px;
-	font-weight: 400;
+	font-weight: 600;
 	display: block;
 	top: 50%;
 	margin-top: -20px;
@@ -917,13 +933,13 @@ body.resume-opened .deebo_fn__cv .cv__bg2{
 	background-color: var(--mc);
 	right: 100%;
 	border-radius: 50px;
-	color: #fff	;
+	color: var(--on-accent);
 	transition: all 3s cubic-bezier(0.165, 0.840, 0.440, 1.000);
 }
 .fn_cs_progress_bar .progress_title{
 	margin: 0;
 	font-size: 18px;
-	font-weight: 400;
+	font-weight: 500;
 	padding: 0 25px;
 	position: relative;
 	z-index: 2;
@@ -933,6 +949,8 @@ body.resume-opened .deebo_fn__cv .cv__bg2{
 .fn_cs_progress_bar .item_in{
 	width: 100%;
 	position: relative;
+	background-color: var(--track);
+	border-radius: 50px;
 }
 .fn_cs_progress_bar .progress_bg{
 	width: 0;
@@ -948,7 +966,7 @@ body.resume-opened .deebo_fn__cv .cv__bg2{
 	top: 0;
 	left: 0;
 	bottom: 0;
-	background-color: var(--elevated);
+	background-color: var(--progress-fill);
 	border-radius: 50px;
 }
 .fn_cs_progress_bar .open .progress_bg:after{
@@ -2218,14 +2236,17 @@ body.light{
 	color: var(--accent-2);
 }
 .light .fn_cs_progress_bar .progress_title{
-	color: #1a221f;
+	color: var(--text);
 }
 .light .fn_cs_progress_bar .progress_percent{
-	color: #1a221f;
-	background-color: #ffffff;
+	color: var(--on-accent);
+	background-color: var(--mc);
 }
 .light .fn_cs_progress_bar .item_in{
-	background-color: #e4ebe7;
+	background-color: var(--track);
+}
+.light .fn_cs_progress_bar .progress_bg:after{
+	background-color: var(--progress-fill);
 }
 .light .fn_cs_service_list .item{
 	background-color: #f4f8f6;
