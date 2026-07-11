@@ -564,9 +564,15 @@ body.resume-opened .deebo_fn__cv .cv__bg2{
 	min-height: calc(100vh - 160px); /* 50px spacing from top, 50px from bottom of the window & 30px from top, 30px from bottom of the section. Summary 160px */
 }
 .section_header .left_hero_header{
-	width: 475px;
-	max-width: 40%;
-	padding-right: 80px;
+	width: 400px;
+	max-width: 34%;
+	padding-right: 48px;
+	flex-shrink: 0;
+}
+.section_header .right_hero_header{
+	width: auto;
+	flex: 1 1 auto;
+	min-width: 0;
 }
 .section_header .circle{
 	position: relative;
@@ -648,9 +654,6 @@ body.resume-opened .deebo_fn__cv .cv__bg2{
 	left: 64%;
 	top: -24%;
 }
-.section_header .right_hero_header{
-	width: 60%;
-}
 .section_header .person_info{
 	position: absolute;
 	right: 52px;
@@ -720,22 +723,25 @@ body.resume-opened .deebo_fn__cv .cv__bg2{
 	margin: 0;
 	padding: 0;
 	font-weight: 500;
-	font-size: 72px;
-	font-size: calc(28px + 2.1vw);
-	line-height: 1.15;
-/*	text-transform: uppercase;*/
+	font-size: clamp(34px, 3.4vw, 58px);
+	line-height: 1.2;
 	color: var(--text);
-	max-width: 100%;
+	max-width: none;
 }
 .my_self h2 .cd-headline{
 	display: inline-block;
-	max-width: 100%;
+	max-width: none;
 }
 .my_self h2 .cd-words-wrapper{
-	max-width: 100%;
+	max-width: none;
+	white-space: nowrap;
 }
 .my_self h2 b{
 	font-weight: inherit;
+	white-space: nowrap;
+}
+.cd-headline.clip .cd-words-wrapper{
+	overflow: hidden;
 }
 /*------------------------------------------------------------------*/
 /*	04) Main title
