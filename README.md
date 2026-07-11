@@ -2,12 +2,12 @@
 
 Creative Developer & Brand Designer based in Arusha, Tanzania.
 
-## Live site files
+## Live site
 
-The published portfolio lives in [`mainpack/html`](mainpack/html).
+Site files are at the **repo root** (required for GitHub Pages, which only allows `/` or `/docs`).
 
-- Dark theme: `mainpack/html/index.html`
-- Light theme: `mainpack/html/index-light.html`
+- Dark theme: `index.html`
+- Light theme: `index-light.html`
 
 ## Local preview
 
@@ -17,6 +17,11 @@ npm run dev
 
 Opens the site at [http://localhost:5500](http://localhost:5500).
 
-Site URL will be: `https://GraceMchomvu.github.io/graceportfolio/`
+## GitHub Pages
 
-In the repo settings, set Pages source to **Deploy from a branch**, branch `main`, folder `/mainpack/html` (or `/ (root)` — the root `index.html` redirects into the site).
+1. Settings → Pages  
+2. Source: **Deploy from a branch**  
+3. Branch: `main` / folder: **`/(root)`**  
+4. Save  
+
+Live URL: https://GraceMchomvu.github.io/graceportfolio/
