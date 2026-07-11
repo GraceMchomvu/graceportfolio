@@ -1,70 +1,31 @@
-jQuery(document).ready(function($){
+﻿jQuery(document).ready(function($){
 	"use strict";
+	//set animation timing
 	var animationDelay 			= 3000,
+		//loading bar effect
 		barAnimationDelay 		= 3800,
-		barWaiting 				= barAnimationDelay - 3000,
+		barWaiting 				= barAnimationDelay - 3000, //3000 is the duration of the transition on the loading bar - set in the scss/css file
+		//letters effect
 		lettersDelay 			= 50,
+		//type effect
 		typeLettersDelay 		= 150,
 		selectionDuration 		= 500,
 		typeAnimationDelay 		= selectionDuration + 800,
+		//clip effect 
 		revealDuration 			= 600,
 		revealAnimationDelay 	= 1500;
 	
-	function measureWordWidth($word){
-		var $clone = $word.clone()
-			.removeClass('is-hidden')
-			.addClass('is-visible')
-			.css({
-				position: 'absolute',
-				left: '-9999px',
-				top: '0',
-				visibility: 'hidden',
-				display: 'inline-block',
-				whiteSpace: 'nowrap',
-				opacity: 1
-			})
-			.appendTo($word.parent());
-		var width = Math.ceil($clone[0].getBoundingClientRect().width);
-		$clone.remove();
-		return width;
-	}
-
-	function sizeClipWrapper(headline){
-		var $wrapper = headline.find('.cd-words-wrapper');
-		var width = 0;
-		$wrapper.find('b').each(function(){
-			var wordWidth = measureWordWidth($(this));
-			if(wordWidth > width){ width = wordWidth; }
-		});
-		// Extra room for the clip caret + font metrics
-		var finalWidth = Math.ceil(width) + 24;
-		$wrapper.css({
-			width: finalWidth,
-			minWidth: finalWidth
-		});
-		$wrapper.data('max-width', finalWidth);
-		return finalWidth;
-	}
-
-	function startHeadlines(){
+	if (document.fonts && document.fonts.ready) {
+		document.fonts.ready.then(function(){ initHeadline(); });
+	} else {
 		initHeadline();
 	}
-
-	if(document.fonts && document.fonts.ready){
-		document.fonts.ready.then(startHeadlines);
-	}else{
-		$(window).on('load', startHeadlines);
-		setTimeout(startHeadlines, 400);
-	}
-
-	$(window).on('resize', function(){
-		$('.cd-headline.clip').each(function(){
-			sizeClipWrapper($(this));
-		});
-	});
+	
 
 	function initHeadline() {
+		//insert <i> element for each letter of a changing word
 		singleLetters($('.cd-headline.letters').find('b'));
+		//initialise headline animation
 		animateHeadline($('.cd-headline'));
 	}
 
@@ -91,8 +52,22 @@ jQuery(document).ready(function($){
 				duration = barAnimationDelay;
 				setTimeout(function(){ headline.find('.cd-words-wrapper').addClass('is-loading'); }, barWaiting);
 			} else if (headline.hasClass('clip')){
-				sizeClipWrapper(headline);
+				// Size wrapper to the longest phrase so titles like "Creative Developer" never clip
+				var words = headline.find('.cd-words-wrapper b'),
+					width = 0;
+				words.each(function(){
+					var $word = $(this),
+						wasVisible = $word.hasClass('is-visible');
+					$word.css({position: 'relative', opacity: 0, display: 'inline-block'});
+					if (!wasVisible) { $word.addClass('is-visible'); }
+					var wordWidth = $word[0].getBoundingClientRect().width;
+					if (wordWidth > width) { width = wordWidth; }
+					if (!wasVisible) { $word.removeClass('is-visible'); }
+					$word.css({position: '', opacity: '', display: ''});
+				});
+				headline.find('.cd-words-wrapper').css('width', Math.ceil(width) + 20);
 			} else if (!headline.hasClass('type') ) {
+				//assign to .cd-words-wrapper the width of its longest word
 				var words = headline.find('.cd-words-wrapper b'),
 					width = 0;
 				words.each(function(){
@@ -102,6 +77,7 @@ jQuery(document).ready(function($){
 				headline.find('.cd-words-wrapper').css('width', width);
 			}
 
+			//trigger animation
 			setTimeout(function(){ hideWord( headline.find('.is-visible').eq(0) ); }, duration);
 		});
 	}
@@ -147,9 +123,7 @@ jQuery(document).ready(function($){
 			$word.addClass('is-visible').removeClass('is-hidden');
 
 		}  else if($word.parents('.cd-headline').hasClass('clip')) {
-			var measured = measureWordWidth($word) + 24;
-			var maxWidth = $word.parents('.cd-words-wrapper').data('max-width') || measured;
-			var revealWidth = Math.max(measured, maxWidth);
+			var revealWidth = Math.ceil($word[0].getBoundingClientRect().width) + 20;
 			$word.parents('.cd-words-wrapper').animate({ 'width' : revealWidth }, revealDuration, function(){ 
 				setTimeout(function(){ hideWord($word); }, revealAnimationDelay); 
 			});
