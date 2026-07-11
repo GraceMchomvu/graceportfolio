@@ -656,34 +656,37 @@ body.resume-opened .deebo_fn__cv .cv__bg2{
 	left: 0;
 	right: 0;
 	bottom: -6%;
-	z-index: 5;
-	-webkit-animation: hero_lines_spin 8s linear infinite;
-	animation: hero_lines_spin 8s linear infinite;
+	z-index: 12;
+	-webkit-animation: hero_lines_spin 5.5s linear infinite;
+	animation: hero_lines_spin 5.5s linear infinite;
 	-webkit-transform-origin: 50% 50%;
 	transform-origin: 50% 50%;
+	pointer-events: none;
 }
 .section_header .lines span{
-	width: 4px;
+	width: 7px;
 	height: 138%;
 	display: block;
-	background: var(--mc);
-	background: -moz-linear-gradient(180deg, var(--mc) 50%, var(--accent-2) 50%, var(--accent-2) 100%);
-	background: -webkit-linear-gradient(180deg, var(--mc) 50%, var(--accent-2) 50%, var(--accent-2) 100%);
-	background: linear-gradient(180deg, var(--mc) 50%, var(--accent-2) 50%, var(--accent-2) 100%);
-	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#e8a03a",endColorstr="#2a9b8f",GradientType=1);
+	background: #f0b55c;
+	background: linear-gradient(180deg, #f3bc5f 0%, #e8a03a 45%, #2a9b8f 55%, #3bb5a7 100%);
+	box-shadow: 0 0 10px rgba(232, 160, 58, 0.55), 0 0 6px rgba(42, 155, 143, 0.35);
+	opacity: 1;
 	transform: rotate(30deg);
 	z-index: 13;
 	position: absolute;
 	top: -10%;
 	left: 40%;
+	border-radius: 4px;
 }
 .section_header .lines span:nth-child(2){
 	left: 52%;
 	top: -13%;
+	opacity: 0.95;
 }
 .section_header .lines span:nth-child(3){
 	left: 64%;
 	top: -16%;
+	opacity: 0.9;
 }
 @-webkit-keyframes hero_lines_spin{
 	from{ -webkit-transform: rotate(0deg); transform: rotate(0deg); }
