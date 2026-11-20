@@ -1868,6 +1868,34 @@ body.resume-opened .deebo_fn__cv .cv__bg2{
 .deebo_fn_modalbox .fn__desc:last-child{
 	margin-bottom: 0;
 }
+
+.deebo_fn_modalbox .case_media{
+	margin: 0 0 28px;
+	width: 100%;
+}
+.deebo_fn_modalbox .case_media img,
+.deebo_fn_modalbox .case_media video{
+	display: block;
+	width: 100%;
+	height: auto;
+	border: 0;
+}
+.deebo_fn_modalbox .case_media video{
+	background-color: #111;
+}
+.deebo_fn_modalbox .case_media figcaption{
+	margin-top: 10px;
+	font-size: 14px;
+	line-height: 1.5;
+	color: #999;
+}
+.deebo_fn_modalbox .case_media.case_media--portrait{
+	max-width: 360px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+
 .fn__nav{
 	margin-top: auto;
 	width: 100%;
@@ -2374,6 +2402,13 @@ body.light{
 .light .deebo_fn_modalbox p{
 	color: #4a554f;
 }
+.light .deebo_fn_modalbox .case_media figcaption{
+	color: #4a554f;
+}
+.light .deebo_fn_modalbox .case_media video{
+	background-color: #1a221f;
+}
+
 .light .deebo_fn_modalbox h3,
 .light .deebo_fn_modalbox .fn__title{
 	color: #1a221f;
